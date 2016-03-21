@@ -1,0 +1,26 @@
+Most face recognition algorithms take still images as probe inputs. This chapter presents a
+video-based face recognition approach that takes video sequences as inputs. Because the detected
+face might be moving in the video sequence, we inevitably have to deal with uncertainty
+in tracking as well as in recognition. Rather than resolving these two uncertainties separately,
+our strategy is to perform simultaneous tracking and recognition of human faces from a video
+sequence.
+In general, a video sequence is a collection of still images; so still-image-based recognition
+algorithms can always be applied. An important property of a video sequence is its temporal
+continuity. Although this property has been exploited for tracking, it has not been used
+for recognition. In this chapter, we systematically investigate how temporal continuity can be
+incorporated for video-based recognition.
+Our probabilistic approach solves still-to-video recognition, where the gallery consists of
+still images and the probes are video sequences. A time series state space model is proposed to
+fuse temporal information in a probe video, which simultaneously characterizes the kinematics
+and identity using a motion vector and an identity variable, respectively. The joint posterior
+distribution of the motion vector and the identity variable is estimated at each time instant
+and then propagated to the next time instant. Marginalization over the motion vector yields a
+robust estimate of the posterior distribution of the identity variable. A computationally efficient
+sequential importance sampling (SIS) algorithm is used to estimate the posterior distribution.
+Empirical results demonstrate that, owing to the propagation of the identity variable over time,
+degeneracy in posterior probability of the identity variable is achieved.
+The organization of the chapter is as follows: Section 1 sets the framework for face recognition
+in video. Section 2 covers in detail all the components of the simultaneous tracking and
+recognition approach. Section 3 presents some techniques for enhancing tracking and recognition
+accuracy via modeling interframe appearance and appearance changes between video
+frames and gallery images. Section 4 addresses future research issues and discussion.

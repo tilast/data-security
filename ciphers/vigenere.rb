@@ -94,14 +94,14 @@ module Ciphers
       a = trigrams.lazy
         .select { |k, v| v.size > 5 }
         .flat_map do |k, v|
-        poses = v.to_a.sort
-        distances = poses.each_with_object([])
-          .with_index { |(item, memo), index| memo << poses[index + 1] - item if poses[index + 1] }
+          poses = v.to_a.sort
+          distances = poses.each_with_object([])
+            .with_index { |(item, memo), index| memo << poses[index + 1] - item if poses[index + 1] }
 
-        distances.flat_map.with_index do |pos, index|
-          distances.map { |pos2| pos.gcd(pos2) }
+          distances.flat_map.with_index do |pos, index|
+            distances.map { |pos2| pos.gcd(pos2) }
+          end
         end
-      end
 
       key_length = a.lazy.group_by { |i| i }.sort { |oc1, oc2| oc2[1].length <=> oc1[1].length }.first.first
       grouped_strings = abc_text.chars.group_by.with_index { |c, i| i % 6 }.map { |a| a.join }
